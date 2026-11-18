@@ -1,7 +1,8 @@
 import http from "node:http";
 import { readFile } from "node:fs/promises";
 
-const PORTA = 3000;
+const PORTA = Number(process.env.PORT) || 3000;
+const HOST = process.env.RENDER ? "0.0.0.0" : "127.0.0.1";
 
 const arquivos = {
   "/": {
@@ -76,6 +77,6 @@ const servidor = http.createServer(async (requisicao, resposta) => {
 });
 
 // Disponível apenas no próprio computador durante o desenvolvimento.
-servidor.listen(PORTA, "127.0.0.1", () => {
-  console.log(`TestReady disponível em http://localhost:${PORTA}`);
+servidor.listen(PORTA, HOST, () => {
+  console.log(`TestReady iniciado na porta ${PORTA}`);
 });
