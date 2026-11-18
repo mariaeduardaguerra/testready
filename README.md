@@ -141,8 +141,16 @@ Não há suíte de testes automatizados nesta versão.
 
 ## Situação do projeto
 
-- Interface e servidor local implementados.
-- Publicação em nuvem pendente.
-- Documentação de avaliação manual pendente.
+- Interface e servidor Node.js implementados.
+- Publicado no Render com HTTPS.
+- Verificação online concluída com três requisições bem-sucedidas.
+- Avaliação completa de câmera, microfone e interface ainda
+  deve ser documentada.
 
+## Demonstração online
 
+[Acessar TestReady](https://testready.onrender.com)
+
+Hospedado no Render com HTTPS.
+O plano gratuito pode apresentar espera na primeira abertura
+após um período sem acessos.
