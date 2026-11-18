@@ -1,0 +1,10 @@
+{
+  "name": "TestReady",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Verificação de câmera, microfone e acesso ao serviço para preparação de provas online.",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  }
+}

@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>TestReady — Antes de começar</title>
+
+    <script src="app.js" defer></script>
+
+    <style>
+      :root {
+        color-scheme: dark;
+        --fundo: #111114;
+        --painel: #1b1b21;
+        --borda: #35333e;
+        --texto: #eeeaf2;
+        --suave: #b0aab9;
+        --destaque: #db7189;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--fundo);
+        color: var(--texto);
+        font: 15px Arial, sans-serif;
+      }
+
+      button,
+      textarea {
+        font: inherit;
+      }
+
+      :focus-visible {
+        outline: 3px solid var(--destaque);
+        outline-offset: 4px;
+      }
+
+      header,
+      main,
+      footer {
+        max-width: 1100px;
+        margin: auto;
+        padding: 25px;
+      }
+
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 15px;
+        border-bottom: 1px solid var(--borda);
+      }
+
+      .marca {
+        margin: 0;
+        font-size: 25px;
+        font-weight: bold;
+      }
+
+      .marca span,
+      .etiqueta {
+        color: var(--destaque);
+      }
+
+      .etiqueta {
+        font-size: 11px;
+        letter-spacing: 2px;
+      }
+
+      .apresentacao {
+        padding: 25px 0;
+      }
+
+      h1 {
+        max-width: 750px;
+        margin: 15px 0;
+        font-size: clamp(30px, 5vw, 48px);
+        line-height: 1.15;
+      }
+
+      h2 {
+        margin: 0 0 12px;
+        font-size: 21px;
+      }
+
+      p {
+        color: var(--suave);
+        line-height: 1.7;
+      }
+
+      .grade {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .cartao {
+        min-width: 0;
+        padding: 25px;
+        border: 1px solid var(--borda);
+        border-radius: 14px;
+        background: var(--painel);
+      }
+
+      .numero {
+        margin-bottom: 15px;
+        color: var(--destaque);
+        font-size: 12px;
+        letter-spacing: 2px;
+      }
+
+      button {
+        padding: 11px 15px;
+        border: 1px solid #754354;
+        border-radius: 7px;
+        background: #42232f;
+        color: var(--texto);
+        cursor: pointer;
+      }
+
+      button:disabled {
+        opacity: 0.5;
+        cursor: wait;
+      }
+
+      .acoes {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .status {
+        min-height: 45px;
+        font-size: 13px;
+        overflow-wrap: anywhere;
+      }
+
+      video {
+        display: block;
+        width: 100%;
+        height: 220px;
+        margin: 18px 0;
+        border-radius: 9px;
+        background: #0b0b0d;
+        object-fit: contain;
+      }
+
+      meter {
+        display: block;
+        width: 100%;
+        height: 30px;
+        margin: 15px 0;
+      }
+
+      .checklist label {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        margin: 18px 0;
+        color: var(--suave);
+        line-height: 1.5;
+      }
+
+      .checklist input {
+        margin-top: 4px;
+        accent-color: var(--destaque);
+      }
+
+      .relatorio {
+        margin-top: 20px;
+      }
+
+      textarea {
+        display: block;
+        width: 100%;
+        min-height: 250px;
+        margin: 15px 0;
+        padding: 15px;
+        border: 1px solid var(--borda);
+        border-radius: 8px;
+        background: #111114;
+        color: var(--texto);
+        resize: vertical;
+      }
+
+      footer {
+        color: var(--suave);
+        font-size: 12px;
+        line-height: 1.8;
+      }
+
+      @media (max-width: 700px) {
+        .grade {
+          grid-template-columns: 1fr;
+        }
+
+        header,
+        main,
+        footer {
+          padding: 18px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <p class="marca">Test<span>Ready</span></p>
+      <span class="etiqueta">ANTES DE COMEÇAR</span>
+    </header>
+
+    <main>
+      <section class="apresentacao">
+        <span class="etiqueta">PREPARAÇÃO TÉCNICA</span>
+
+        <h1>
+          Menos imprevistos.<br>
+          Mais tranquilidade para começar.
+        </h1>
+
+        <p>
+          Confira câmera, microfone e acesso ao serviço.
+          Esta verificação é demonstrativa e não substitui
+          os requisitos da sua instituição.
+        </p>
+
+        <p id="contexto"></p>
+      </section>
+
+      <div class="grade">
+        <section class="cartao">
+          <div class="numero">01 · CÂMERA</div>
+
+          <h2>Confira sua imagem</h2>
+
+          <p>
+            Autorize o acesso e verifique se a imagem está
+            visível e bem iluminada.
+          </p>
+
+          <video id="video" autoplay muted playsinline></video>
+
+          <div class="acoes">
+            <button id="iniciarCamera">Testar câmera</button>
+            <button id="pararCamera">Encerrar câmera</button>
+          </div>
+
+          <p id="statusCamera" class="status" role="status">
+            Ainda não testada.
+          </p>
+        </section>
+
+        <section class="cartao">
+          <div class="numero">02 · MICROFONE</div>
+
+          <h2>Confira a entrada de áudio</h2>
+
+          <p>
+            Autorize o microfone e fale normalmente.
+            O indicador deve reagir à entrada de áudio.
+          </p>
+
+          <label for="nivelAudio">Nível de entrada</label>
+
+          <meter
+            id="nivelAudio"
+            min="0"
+            max="100"
+            value="0"
+          ></meter>
+
+          <div class="acoes">
+            <button id="iniciarMicrofone">Testar microfone</button>
+            <button id="pararMicrofone">Encerrar microfone</button>
+          </div>
+
+          <p id="statusMicrofone" class="status" role="status">
+            Ainda não testado.
+          </p>
+
+          <p>
+            O áudio é analisado localmente.
+            Não há gravação nem envio de áudio ou vídeo ao servidor.
+          </p>
+        </section>
+
+        <section class="cartao">
+          <div class="numero">03 · CONEXÃO</div>
+
+          <h2>Acesso ao serviço</h2>
+
+          <p>
+            Envia três requisições ao serviço do TestReady
+            e informa o tempo de resposta observado.
+          </p>
+
+          <button id="testarConexao">
+            Verificar acesso
+          </button>
+
+          <p id="statusConexao" class="status" role="status">
+            Ainda não verificado.
+          </p>
+
+          <p>
+            Não mede velocidade de download ou upload.
+            Em localhost, verifica somente o serviço no seu computador.
+          </p>
+        </section>
+
+        <section class="cartao checklist">
+          <div class="numero">04 · PREPARAÇÃO</div>
+
+          <h2>Seu checklist</h2>
+
+          <label>
+            <input type="checkbox">
+            Li os requisitos e as orientações da instituição.
+          </label>
+
+          <label>
+            <input type="checkbox">
+            Conferi o horário e o fuso da prova.
+          </label>
+
+          <label>
+            <input type="checkbox">
+            Separei os documentos solicitados.
+          </label>
+
+          <label>
+            <input type="checkbox">
+            Preparei um ambiente iluminado e tranquilo.
+          </label>
+
+          <label>
+            <input type="checkbox">
+            Conferi energia, carregador e conexão.
+          </label>
+        </section>
+      </div>
+
+      <section class="cartao relatorio">
+        <h2>Resumo da verificação</h2>
+
+        <p>
+          Gere o resumo depois dos testes.
+          Você pode copiá-lo para guardar os resultados.
+        </p>
+
+        <div class="acoes">
+          <button id="gerarResumo">Gerar resumo</button>
+          <button id="copiarResumo">Copiar resumo</button>
+        </div>
+
+        <label for="resumo">Resultado em texto</label>
+        <textarea id="resumo" readonly></textarea>
+
+        <p id="statusCopia" role="status"></p>
+      </section>
+    </main>
+
+    <footer>
+      TestReady · Maria Eduarda Guerra · Projeto educacional de Redes e Computação em Nuvem.
+      <br>
+      Nenhum resultado representa aprovação oficial para uma prova.
+      Os resultados e o checklist desta versão não são salvos após recarregar.
+    </footer>
+  </body>
+</html>
